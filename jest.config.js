@@ -1,7 +1,7 @@
-/** @type {import('jest').Config} */
-const config = {
-  presets: ['@babel/preset-env'],
-  testEnvironment: "jsdom",
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  presets: ['ts-jest','@babel/preset-env'],
+  testEnvironment: 'node',
   coverageProvider: 'babel',
   testEnvironmentOptions: {
     userAgent:
@@ -15,5 +15,3 @@ const config = {
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
 };
-
-module.exports = config;

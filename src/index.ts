@@ -1,1 +1,1 @@
-export { isNull } from './test'
+export { isNull } from './test1'
