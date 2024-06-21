@@ -1,29 +1,26 @@
 import SparkMD5 from 'spark-md5'
 
-export default class FileHandle {
+export default class FileChunks {
 
-  inputName:string
+  inputElement:HTMLInputElement
   maxSize:number
   hashValue:string = ""
   chunks:Blob[] = []
 
-  constructor(inputName:string,maxSize:number) {
-    this.inputName = inputName
+  constructor(inputElement:HTMLInputElement,maxSize:number) {
+    this.inputElement = inputElement
     this.maxSize = maxSize
   }
 
-  handleInputFile = () => {
-    let inputFile = document.querySelector(this.inputName) as HTMLInputElement
-    if(!inputFile) return 
-    let files = inputFile.files as FileList
+  init = () => {
+    let files = this.inputElement.files as FileList
     this.chunks = this.creatChunk(files[0], 10 * 1024)
-    this.hash(this.chunks).then((res) => {
+    this.creatHash(this.chunks).then((res) => {
       this.hashValue = res
-      console.log(res);
     })
   }
 
-  hash = (chunks:Blob[]):Promise<string>  => {
+  creatHash = (chunks:Blob[]):Promise<string>  => {
     return new Promise((resolve) => {
       const spark = new SparkMD5.ArrayBuffer()
       const reader = new FileReader()

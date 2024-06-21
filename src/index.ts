@@ -1,1 +1,2 @@
-export { isNull } from './test1'
+export { isNull } from './test/test1'
+export { default as FileChunks } from './creatChunk/index'

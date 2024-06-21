@@ -1,7 +1,7 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   presets: ['ts-jest','@babel/preset-env'],
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   coverageProvider: 'babel',
   testEnvironmentOptions: {
     userAgent:
